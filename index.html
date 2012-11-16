@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width">
+
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+<!--       <link rel="stylesheet" href="css/vendor/normalize.css"> -->
+      <link rel="stylesheet" href="css/vendor/reveal.css">
+      <link rel="stylesheet" href="css/vendor/reveal-default-theme.css" id="theme">
+      <!-- For syntax highlighting -->
+      <link rel="stylesheet" href="css/vendor/zenburn.css">
+      <script src="js/vendor/head.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+            <h1>Teaching designers how to code</h1>
+            <h3>Because Photoshop is grim as balls</h3>
+            <p>
+                <small>Created by <a href="http://twitter.com/ninjabiscuit">@ninjabiscuit</a></small>
+            </p>
+        </section>
+
+        <section>
+          <h2>What's it all about?</h2>
+          <p>
+            Getting up and running with the tools, techniques and open source projects that'll help you start prototyping layouts and designs in the browser
+          </p>
+        </section>
+
+        <section>
+          <h2>What's it not about?</h2>
+          <p>
+            Best practices, everyday terminal use, in depth coding techniques
+          </p>
+        </section>
+
+        <section>
+          <h2>Newsflash</h2>
+          <p>
+            You don't have to be the best developer, or even a good developer to make something useful or meaningful
+          </p>
+
+        </section>
+
+        <section>
+          <h2>Lets get started</h2>
+        </section>
+
+        <section>
+          <h2>You'll need an editor</h2>
+          <a href="http://www.sublimetext.com/2"><img src="img/sublime.png" alt="sublime text 2 icon" /></a>
+        </section>
+
+        <!-- ***************** -->
+        <!-- Webserver section -->
+        <!-- ***************** -->
+
+        <section>
+
+          <section>
+            <h2>You'll also need a webserver</h2>
+            <p>If you're using a Mac you already have one - you just need to enable it</p>
+          </section>
+
+          <section>
+            <h2>Setting up web sharing on OSX Lion 10.7 and 10.6</h2>
+            <em>(you'll only need to do this once)</em>
+            <img src="img/mac-10.6-web-sharing.png" width="675" height="557">
+          </section>
+
+          <section>
+            <h2>Mountain Lion is a bit trickier</h2>
+
+            <ol>
+              <li>To open the OS X Terminal utility type (cmd+space) terminal (enter)</li>
+              <li>Create and edit an Apache user config file named after your user account by typing:</li>
+              <pre><code class="xml">sudo pico /etc/apache2/users/`whoami`.conf</code></pre>
+              <li>
+                Copy the following text into the Terminal editor that opens, but be sure to change the "username" text to the short name of your user account:
+                <pre><code class="xml">
+  &lt;Directory "/Users/username/Sites/"&gt;
+    Options Indexes MultiViews
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  &lt;/Directory&gt;
+              </code></pre>
+              </li>
+              <li>Save and close the editor by pressing Control-O followed by Control-X.</li>
+            </ol>
+            <br /><br />
+            <cite>Credit: <a href="http://reviews.cnet.com/8301-13727_7-57481978-263/how-to-enable-web-sharing-in-os-x-mountain-lion/">Topher Kessler</a></cite>
+          </section>
+
+          <section>
+            <h2>Mountain Lion continued</h2>
+            <p>To enable the server even after subsequent reboots, type the following command:</p>
+            <pre><code class="xml">sudo defaults write /System/Library/LaunchDaemons/org.apache.httpd Disabled -bool false</code></pre>
+          </section>
+
+          <section>
+            <h2>Hopefully you won't have to screw with any of this again</h2>
+            <p>You should now be able to access your webserver at localhost (change "andrewwalker" to the short name of your user account)</p>
+            <a href="http://localhost/~andrewwalker">http://localhost/~andrewwalker</a>
+          </section>
+
+        </section>
+
+        <!-- ******************* -->
+        <!-- New project section -->
+        <!-- ******************* -->
+
+        <section>
+
+          <section>
+            <h2>Lets create a new project</h2>
+            <p>You should have a folder called Sites in your home directory - if not, create one now</p>
+            <p>All your future projects will live in the Sites directory</p>
+          </section>
+
+          <section>
+            <h2>Create a new project</h2>
+            <p>Create a new folder in Sites called design1</p>
+          </section>
+
+          <section>
+            <h2>Open the project in Sublime Text 2</h2>
+            <pre><code class="xml">File > Open</code></pre>
+            <p>Select the design1 folder</p>
+          </section>
+
+        </section>
+
+        <!-- ************************* -->
+        <!-- HTML5 Boilerplate section -->
+        <!-- ************************* -->
+
+        <section>
+
+          <section>
+            <h2>Before we start coding, lets talk open source</h2>
+            <p>There are a wealth of projects on github and elsewhere that have been created to help developers get up and running quickly</p>
+          </section>
+
+          <section>
+            <h2>HTML5 Boilerplate</h2>
+            <p>HTML5BP enables you to set up the bare bones of a web page with ease: <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a></p>
+            <br />
+            <h3>It includes</h3>
+            <ul>
+              <li>A basic html5 template with correct doctype, body, head, jquery and some other goodies</li>
+              <li>Normalize.css - an HTML5-ready alternative to CSS resets</li>
+              <li>Some basic styles and helper classes (main.css)</li>
+              <li>Lots of other good stuff</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Grids</h2>
+            <p>Grid frameworks set up some basic CSS classes to make it easier to layout sites.</p>
+            <p>Some are responsive, others aren't - if you're working to a grid use whatever works for you.</p>
+            <br />
+            <h3>Some grid frameworks</h3>
+            <ul>
+              <li><a href="http://cssgrid.net/">The 1140 CSS grid</a></li>
+              <li><a href="http://960.gs/">The 960 grid system</a></li>
+              <li><a href="https://github.com/callum-/flynn">Flyn (Callum's homemade flexible grid system)</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Placeholder Services</h2>
+            <p>If you're wireframing or designing without final imagery, you may want to use an image placeholder service like <a href="http://placehold.it/">placehold.it</a></p>
+            <img src="http://placehold.it/350x250">
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h2>Back to our project</h2>
+            <p>Lets download and include <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a> and <a href="https://raw.github.com/callum-/flynn/master/flynn.css">Flyn</a></p>
+            <br />
+            <ol>
+              <li>Copy the contents of the HTML5BP into your project folder</li>
+              <li>Create a new file in the css directory called flyn.css and copy the code from the link above into that file</li>
+              <li>
+                The flynn stylesheet can be added to index.html between normalize and main on line 16
+                <pre><code class="xml">&lt;link rel="stylesheet" href="css/normalize.css"&gt;
+&lt;link rel="stylesheet" href="css/flynn.css"&gt;
+&lt;link rel="stylesheet" href="css/main.css"&gt;</code></pre>
+              </li>
+            </ol>
+          </section>
+
+        </section>
+
+        <!-- ************** -->
+        <!-- Github section -->
+        <!-- ************** -->
+
+        <section>
+
+          <section>
+            <h2>Github</h2>
+            <p>
+              If you want to collaborate with other designers and developers you need to get up and running with Github. But it's easier than you think!
+            </p>
+          </section>
+
+          <section>
+            <h2>Github</h2>
+            <p>
+              There's an app for that! <a href="http://mac.github.com/">http://mac.github.com/</a>
+            </p>
+          </section>
+
+        </section>
+
+        <section>
+          <h2>Mother F**king coding - How does it work?</h2>
+        </section>
+
+        <!-- *********** -->
+        <!-- Aws section -->
+        <!-- *********** -->
+
+        <section>
+          <h2>Amazon Web Services and Simple Storage Service</h2>
+          <p>You can get started with <a href="http://aws.amazon.com/">Amazon S3</a> for free.</p>
+        </section>
+
+      </div>
+    </div>
+
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'js/vendor/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'js/vendor/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'js/vendor/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'js/vendor/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'js/vendor/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'js/vendor/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'js/vendor/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  </body>
+</html>
